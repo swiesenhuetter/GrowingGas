@@ -134,7 +134,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	int wmId, wmEvent;
-	PAINTSTRUCT ps;
+	PAINTSTRUCT ps = {0};
 	HDC hdc;
 
 	switch (message)
@@ -156,10 +156,17 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		}
 		break;
 	case WM_PAINT:
-		hdc = BeginPaint(hWnd, &ps);
-		// TODO: Add any drawing code here...
-		EndPaint(hWnd, &ps);
-		break;
+		{
+			hdc = BeginPaint(hWnd, &ps);
+			const TCHAR* text = L"Bitte lesen";
+			TextOut(hdc,
+				30, // x
+				30, // y
+				text, // Zeiger auf const char
+				wcslen(text)); // Anzahl Zeichen
+			EndPaint(hWnd, &ps);
+			break;
+		}
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		break;

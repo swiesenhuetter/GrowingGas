@@ -1,20 +1,22 @@
 // MyTestSuite.h
 #include <cxxtest/TestSuite.h>
 #include "GrowingGas.h"
-#include "Unit2D.h"
+#include "Unit.h"
 
 class MyTestSuite : public CxxTest::TestSuite
 {
 public:
-	void testAddition( void )
-	{
-		TS_ASSERT( 1 + 1 > 3 );
-		TS_ASSERT_EQUALS( 1 + 1, 2 );
-	}
-
 	void testUnitMove ( void )
 	{
-		Position2D pos1 = {1.0, 1.0};
-		Unit2D u1(pos1);
+		Position pos1 = {1.0, 1.0};
+		Unit u1(pos1);
+		TS_ASSERT(1);
+	}
+
+	void testFixArray( void )
+	{
+		boost::array<int,7> fixArray = {1,2,3,4};
+		TS_ASSERT_EQUALS( fixArray[3], 4 );
+		TS_ASSERT_EQUALS( fixArray[4], 0 );
 	}
 };

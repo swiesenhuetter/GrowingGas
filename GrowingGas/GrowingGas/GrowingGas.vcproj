@@ -157,6 +157,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LearningAlgorithm.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -177,7 +181,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Unit2D.cpp"
+				RelativePath=".\Unit.cpp"
 				>
 			</File>
 		</Filter>
@@ -191,6 +195,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\LearningAlgorithm.h"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.h"
 				>
 			</File>
@@ -199,7 +207,7 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Unit2D.h"
+				RelativePath=".\Unit.h"
 				>
 			</File>
 		</Filter>

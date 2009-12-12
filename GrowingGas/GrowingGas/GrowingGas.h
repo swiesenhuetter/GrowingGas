@@ -1,15 +1,16 @@
 #pragma once
 
 #include <list>
-#include "Unit2D.h"
+#include "Unit.h"
+#include "LearningAlgorithm.h"
 
-template <int dim>
 class GrowingGas
 {
 public:
 	GrowingGas(void);
 	~GrowingGas(void);
+
 private:
-	void LearningAlgorithm(void);
-	std::list<Unit2D> _units;
+	LearningAlgorithm _algo;
+	std::list<Unit> _units;
 };

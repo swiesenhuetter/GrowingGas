@@ -181,6 +181,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ImagePanel.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\stdafx.cpp"
 				>
 				<FileConfiguration
@@ -208,6 +212,10 @@
 			>
 			<File
 				RelativePath=".\GUI.h"
+				>
+			</File>
+			<File
+				RelativePath=".\ImagePanel.h"
 				>
 			</File>
 			<File

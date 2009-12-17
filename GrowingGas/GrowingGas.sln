@@ -15,6 +15,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcproj", "{55F19A6D-4D7A-42FE-8060-2D210B022925}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{E5BE07DC-CA24-459D-8246-CC09BC2E22EB}"
+	ProjectSection(SolutionItems) = preProject
+		data\pattern1.bmp = data\pattern1.bmp
+		data\pattern2.bmp = data\pattern2.bmp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True

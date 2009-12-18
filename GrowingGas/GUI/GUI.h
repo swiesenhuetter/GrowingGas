@@ -18,19 +18,14 @@ public:
 	void OnPaint(wxPaintEvent& WXUNUSED(event));
     void OnEraseBackground(wxEraseEvent& WXUNUSED(event)){
 	}
+	void OnClose(wxCloseEvent& WXUNUSED(event));
 
 private:
-    ImagePanel      *m_panel;
+//    ImagePanel      *m_panel;
+    wxPanel      *m_panel;
 	wxImage			*m_bmpImage;
 	wxBitmap		*m_bitmap;
 
     DECLARE_EVENT_TABLE()
 };
- 
-BEGIN_EVENT_TABLE(BasicFrame, wxFrame)
-    EVT_ERASE_BACKGROUND(BasicFrame::OnEraseBackground)
-    EVT_PAINT(BasicFrame::OnPaint)
-END_EVENT_TABLE()
-
-
 #endif 

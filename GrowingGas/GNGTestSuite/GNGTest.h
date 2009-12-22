@@ -31,5 +31,6 @@ public:
 	void testImageData2D( void )
 	{
 		ImageData2D data;
+		TS_ASSERT_EQUALS( data.size() , 0 );
 	}
 };

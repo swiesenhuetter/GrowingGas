@@ -21,6 +21,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			InheritedPropertySheets="..\SolutionProperties.vsprops"
 			CharacterSet="1"
 			>
 			<Tool
@@ -41,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="&quot;..\..\wxWidgets-2.8.10\include&quot;;&quot;..\..\wxWidgets-2.8.10\include\msvc&quot;"
+				AdditionalIncludeDirectories="..\GrowingGas;&quot;..\..\wxWidgets-2.8.10\include&quot;;&quot;..\..\wxWidgets-2.8.10\include\msvc&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -95,6 +96,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			InheritedPropertySheets="..\SolutionProperties.vsprops"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
 			>

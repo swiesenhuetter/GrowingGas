@@ -1,5 +1,6 @@
 #pragma once
 #include <wx\wx.h>
+#include "ImageData2D.h"
 
 class ImagePanel :
 	public wxPanel
@@ -13,6 +14,8 @@ private:
 
 	void OnPaint(wxPaintEvent& WXUNUSED(event));
 	void OnEraseBackground(wxEraseEvent& WXUNUSED(event));
+
+   ImageData2D data;
 
     DECLARE_EVENT_TABLE()
 };

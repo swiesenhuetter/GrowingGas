@@ -157,6 +157,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ImageData2D.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\LearningAlgorithm.cpp"
 				>
 			</File>
@@ -195,7 +199,19 @@
 				>
 			</File>
 			<File
+				RelativePath=".\ImageData2D.h"
+				>
+			</File>
+			<File
 				RelativePath=".\LearningAlgorithm.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Pattern.h"
+				>
+			</File>
+			<File
+				RelativePath=".\PatternSet.h"
 				>
 			</File>
 			<File

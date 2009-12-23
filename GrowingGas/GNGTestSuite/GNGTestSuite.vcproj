@@ -42,7 +42,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\..\cxxtest;..\GrowingGas"
+				AdditionalIncludeDirectories="..\..\cxxtest;..\GrowingGas;&quot;..\..\wxWidgets-2.8.10\include&quot;;&quot;..\..\wxWidgets-2.8.10\include\msvc&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_CONSOLE"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
@@ -61,9 +61,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="GrowingGasD.lib "
+				AdditionalDependencies="GrowingGasD.lib wxmsw28ud_core.lib wxbase28ud.lib rpcrt4.lib comctl32.lib"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(SolutionDir)\lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)\lib&quot;;&quot;.\..\..\wxWidgets-2.8.10\lib\vc_lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				TargetMachine="1"
@@ -118,7 +118,7 @@
 				Name="VCCLCompilerTool"
 				Optimization="2"
 				EnableIntrinsicFunctions="true"
-				AdditionalIncludeDirectories="..\..\cxxtest;..\GrowingGas"
+				AdditionalIncludeDirectories="..\..\cxxtest;..\GrowingGas;&quot;..\..\wxWidgets-2.8.10\include&quot;;&quot;..\..\wxWidgets-2.8.10\include\msvc&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_CONSOLE"
 				RuntimeLibrary="2"
 				EnableFunctionLevelLinking="true"
@@ -136,9 +136,9 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="GrowingGas.lib"
+				AdditionalDependencies="GrowingGas.lib wxmsw28u_core.lib wxbase28u.lib rpcrt4.lib comctl32.lib"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="$(SolutionDir)\lib"
+				AdditionalLibraryDirectories="&quot;$(SolutionDir)\lib&quot;;&quot;.\..\..\wxWidgets-2.8.10\lib\vc_lib&quot;"
 				GenerateDebugInformation="true"
 				SubSystem="1"
 				OptimizeReferences="2"

@@ -8,5 +8,5 @@ public:
 	PatternSet(void){}
 	virtual ~PatternSet(void){}
 	virtual int size() = 0;
-	virtual const Pattern* getAt(int position) = 0;
+	virtual const Pattern getAt(int position) = 0;
 };

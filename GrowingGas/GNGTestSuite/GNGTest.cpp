@@ -32,32 +32,32 @@ public:
  void runTest() { if ( suite_PatternTestSuite ) suite_PatternTestSuite->testWhiteDiagonal(); }
 } testDescription_PatternTestSuite_testWhiteDiagonal;
 
+static class TestDescription_PatternTestSuite_testGrowingGasCreate : public CxxTest::RealTestDescription {
+public:
+ TestDescription_PatternTestSuite_testGrowingGasCreate() : CxxTest::RealTestDescription( Tests_PatternTestSuite, suiteDescription_PatternTestSuite, 61, "testGrowingGasCreate" ) {}
+ void runTest() { if ( suite_PatternTestSuite ) suite_PatternTestSuite->testGrowingGasCreate(); }
+} testDescription_PatternTestSuite_testGrowingGasCreate;
+
 static MyTestSuite suite_MyTestSuite;
 
 static CxxTest::List Tests_MyTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite( "GNGTest.h", 66, "MyTestSuite", suite_MyTestSuite, Tests_MyTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite( "GNGTest.h", 74, "MyTestSuite", suite_MyTestSuite, Tests_MyTestSuite );
 
-static class TestDescription_MyTestSuite_testUnitMove : public CxxTest::RealTestDescription {
+static class TestDescription_MyTestSuite_testUnitLink : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testUnitMove() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 69, "testUnitMove" ) {}
- void runTest() { suite_MyTestSuite.testUnitMove(); }
-} testDescription_MyTestSuite_testUnitMove;
-
-static class TestDescription_MyTestSuite_testGrowingGasCreate : public CxxTest::RealTestDescription {
-public:
- TestDescription_MyTestSuite_testGrowingGasCreate() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 76, "testGrowingGasCreate" ) {}
- void runTest() { suite_MyTestSuite.testGrowingGasCreate(); }
-} testDescription_MyTestSuite_testGrowingGasCreate;
+ TestDescription_MyTestSuite_testUnitLink() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 78, "testUnitLink" ) {}
+ void runTest() { suite_MyTestSuite.testUnitLink(); }
+} testDescription_MyTestSuite_testUnitLink;
 
 static class TestDescription_MyTestSuite_testFixArray : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 83, "testFixArray" ) {}
+ TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 88, "testFixArray" ) {}
  void runTest() { suite_MyTestSuite.testFixArray(); }
 } testDescription_MyTestSuite_testFixArray;
 
 static class TestDescription_MyTestSuite_testImageData2D : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 90, "testImageData2D" ) {}
+ TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 95, "testImageData2D" ) {}
  void runTest() { suite_MyTestSuite.testImageData2D(); }
 } testDescription_MyTestSuite_testImageData2D;
 

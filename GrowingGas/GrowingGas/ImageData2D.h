@@ -18,6 +18,11 @@ public:
 	virtual int size();
 	virtual const Pattern getAt(int index); // not image specific ... interface
 	void createFromFixelArray(pixel* firstPixel, int width, int height);
+
+	static const int redIndex	= 0;
+	static const int greenIndex = 1;
+	static const int blueIndex	= 2;
+
 private:
 	std::vector<pixel> _imageData;
 	int _width;

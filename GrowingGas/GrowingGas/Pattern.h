@@ -9,6 +9,9 @@ struct Pattern
 {
 	Position position;
 	OutputValue output;
+
+	static const int horizontal	= 0;
+	static const int vertical = 1;
 };
 
 

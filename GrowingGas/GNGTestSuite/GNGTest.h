@@ -57,6 +57,14 @@ public:
 		TS_ASSERT_EQUALS( _squareData.getAt(15).output[0], 255);
 		TS_ASSERT_EQUALS( _squareData.getAt(14).output[0], 0);
 	}
+
+	void testGrowingGasCreate ( void )
+	{
+		GrowingGas gg(_squareData);
+		int numberOfUnits = gg.numUnits();
+		TS_ASSERT_EQUALS( numberOfUnits, 2 );
+	}
+
 private:
 	wxImage _square;
 	ImageData2D _squareData;
@@ -66,18 +74,15 @@ private:
 class MyTestSuite : public CxxTest::TestSuite
 {
 public:
-	void testUnitMove ( void )
+
+	void testUnitLink ( void )
 	{
 		Position pos1 = {1.0, 1.0};
+		Position pos2 = {2.0, 2.0};
 		Unit u1(pos1);
-		TS_ASSERT(1);
-	}
-
-	void testGrowingGasCreate ( void )
-	{
-		GrowingGas gg;
-		int numberOfUnits = gg.numUnits();
-		TS_ASSERT_EQUALS( numberOfUnits, 2 );
+		Unit u2(pos2);
+		u1.link(u2);
+		TS_ASSERT(11111111111);
 	}
 
 	void testFixArray( void )

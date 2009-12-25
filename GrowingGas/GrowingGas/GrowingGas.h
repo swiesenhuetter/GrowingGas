@@ -21,6 +21,8 @@ public:
 private:
 	LearningAlgorithm _algo;
 	std::list<Unit> _units;
+	std::list<Edge> _edges;
+
 	PatternSet& _trainingPatterns;
 	GrowingGas& operator=(const GrowingGas&) {}// forbidden because of non static reference data member
 

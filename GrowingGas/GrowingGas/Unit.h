@@ -2,6 +2,7 @@
 
 #include <list>
 #include "Pattern.h"
+#include "Edge.h"
 
 class Unit
 {
@@ -10,9 +11,11 @@ public:
 	Unit(Position pos);
 	~Unit(void);
 
-	void link(Unit& newNeighbour);
+	Edge link(Unit& newNeighbour);
 	void unlink(Unit& exNeighbour);
 	
+	bool isNeigbour(const Unit& other);
+	bool isSingle( void );
 private:
 	Position _position;
 	std::list<Unit*> _neighbours;

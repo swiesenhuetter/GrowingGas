@@ -81,8 +81,20 @@ public:
 		Position pos2 = {2.0, 2.0};
 		Unit u1(pos1);
 		Unit u2(pos2);
+		Unit u3;
 		u1.link(u2);
-		TS_ASSERT(11111111111);
+		TS_ASSERT(u1.isNeigbour(u2));
+		TS_ASSERT(u2.isNeigbour(u1));
+		TS_ASSERT(! u2.isNeigbour(u2));
+		TS_ASSERT(! u1.isNeigbour(u1));
+		TS_ASSERT(! u3.isNeigbour(u1));
+		TS_ASSERT(! u3.isNeigbour(u2));
+		TS_ASSERT(! u1.isNeigbour(u3));
+		TS_ASSERT(! u2.isNeigbour(u3));
+
+		TS_ASSERT(! u1.isSingle());
+		TS_ASSERT(! u2.isSingle());
+		TS_ASSERT(u3.isSingle());
 	}
 
 	void testFixArray( void )

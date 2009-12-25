@@ -14,27 +14,40 @@ Unit::Unit(Position pos)
 {
 }
 
-void Unit::link(Unit& newNeighbour)
+Edge Unit::link(Unit& newNeighbour)
 {
-	std::list<Unit*>::iterator found = std::find(_neighbours.begin(),_neighbours.end(),&newNeighbour);
-	if (found == _neighbours.end())
+	if (! isNeigbour(newNeighbour))
 	{
 		_neighbours.push_back(&newNeighbour);
 	}
-	std::list<Unit*>::iterator foundBackLink = std::find(newNeighbour._neighbours.begin(),newNeighbour._neighbours.end(),this);
-	if (foundBackLink == newNeighbour._neighbours.end())
+	if (! newNeighbour.isNeigbour(*this))
 	{
 		newNeighbour._neighbours.push_back(this);
 	}
-	// how to test this ??
+	return Edge(this,&newNeighbour);
 }
 
 void Unit::unlink(Unit& exNeighbour)
 {
-	std::list<Unit*>::iterator found = std::find(_neighbours.begin(),_neighbours.end(),&exNeighbour);
-	if(found != _neighbours.end())
+	if(isNeigbour(exNeighbour))
 	{
 		// remove
 	}
 	// smilar to link ?
+}
+
+bool Unit::isNeigbour(const Unit& other)
+{
+	bool unitInNeighbourhood = false;
+	std::list<Unit*>::iterator found = std::find(_neighbours.begin(),_neighbours.end(),&other);
+	if (found != _neighbours.end())
+	{
+		unitInNeighbourhood = true;
+	}
+	return unitInNeighbourhood;
+}
+
+bool Unit::isSingle( void )
+{
+	return _neighbours.empty();
 }

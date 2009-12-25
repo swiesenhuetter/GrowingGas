@@ -51,13 +51,13 @@ public:
 
 static class TestDescription_MyTestSuite_testFixArray : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 88, "testFixArray" ) {}
+ TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 100, "testFixArray" ) {}
  void runTest() { suite_MyTestSuite.testFixArray(); }
 } testDescription_MyTestSuite_testFixArray;
 
 static class TestDescription_MyTestSuite_testImageData2D : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 95, "testImageData2D" ) {}
+ TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 107, "testImageData2D" ) {}
  void runTest() { suite_MyTestSuite.testImageData2D(); }
 } testDescription_MyTestSuite_testImageData2D;
 

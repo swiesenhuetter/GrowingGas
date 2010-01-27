@@ -95,6 +95,11 @@ public:
 		TS_ASSERT(! u1.isSingle());
 		TS_ASSERT(! u2.isSingle());
 		TS_ASSERT(u3.isSingle());
+
+		TS_ASSERT_EQUALS(u1.getNeighbours().size(), 1);
+		TS_ASSERT_EQUALS(u2.getNeighbours().size(), 1);
+		TS_ASSERT_EQUALS(u3.getNeighbours().size(), 0);
+
 	}
 
 	void testFixArray( void )

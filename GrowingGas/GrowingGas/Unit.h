@@ -16,7 +16,9 @@ public:
 	
 	bool isNeigbour(const Unit& other);
 	bool isSingle( void );
+	std::list<Unit*> getNeighbours(void);
+
 private:
 	Position _position;
-	std::list<Unit*> _neighbours;
+	std::list<Edge> _edges;
 };

@@ -65,6 +65,20 @@ public:
 		TS_ASSERT_EQUALS( numberOfUnits, 2 );
 	}
 
+	void testTwoBest ( void )
+	{
+		GrowingGas gg(_squareData);
+		Position pos1 = {1.0, 1.0};
+		boost::array<Unit*,2> best2 = {0,0};
+		best2 = gg.get2BestMatchingUnits(pos1);
+		TS_ASSERT(best2[0]);
+		TS_ASSERT(best2[1]);
+		if (best2[0] && best2[1])
+		{
+			TS_ASSERT(best2[0]->euclideanDistance(pos1) <= best2[1]->euclideanDistance(pos1));
+		}
+	}
+
 private:
 	wxImage _square;
 	ImageData2D _squareData;
@@ -114,4 +128,17 @@ public:
 		ImageData2D data;
 		TS_ASSERT_EQUALS( data.size() , 0 );
 	}
+
+	void testDistance( void )
+	{
+		Position pos1 = {1.0, 1.0};
+		Position pos2 = {1.0, 2.0};
+		Unit u1(pos1);
+		Unit u2(pos2);
+		double dist = u1.euclideanDistance(pos2);
+		TS_ASSERT_DELTA(dist,1.0,0.00001);
+		dist = u1.euclideanDistance(pos1);
+		TS_ASSERT_DELTA(dist,0.0,0.00001);
+	}
+
 };

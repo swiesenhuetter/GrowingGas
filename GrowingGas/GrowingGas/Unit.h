@@ -17,6 +17,7 @@ public:
 	bool isNeigbour(const Unit& other);
 	bool isSingle( void );
 	std::list<Unit*> getNeighbours(void);
+	double euclideanDistance(const Position& pattern);
 
 private:
 	Position _position;

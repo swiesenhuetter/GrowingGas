@@ -70,3 +70,10 @@ bool Unit::isSingle( void )
 {
 	return _edges.empty();
 }
+
+double Unit::euclideanDistance(const Position& pattern)
+{
+	double dist = 0;
+	dist = ::euklideanDistance(_position,pattern);
+	return dist;
+}

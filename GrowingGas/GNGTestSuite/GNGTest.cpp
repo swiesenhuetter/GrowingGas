@@ -38,27 +38,39 @@ public:
  void runTest() { if ( suite_PatternTestSuite ) suite_PatternTestSuite->testGrowingGasCreate(); }
 } testDescription_PatternTestSuite_testGrowingGasCreate;
 
+static class TestDescription_PatternTestSuite_testTwoBest : public CxxTest::RealTestDescription {
+public:
+ TestDescription_PatternTestSuite_testTwoBest() : CxxTest::RealTestDescription( Tests_PatternTestSuite, suiteDescription_PatternTestSuite, 68, "testTwoBest" ) {}
+ void runTest() { if ( suite_PatternTestSuite ) suite_PatternTestSuite->testTwoBest(); }
+} testDescription_PatternTestSuite_testTwoBest;
+
 static MyTestSuite suite_MyTestSuite;
 
 static CxxTest::List Tests_MyTestSuite = { 0, 0 };
-CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite( "GNGTest.h", 74, "MyTestSuite", suite_MyTestSuite, Tests_MyTestSuite );
+CxxTest::StaticSuiteDescription suiteDescription_MyTestSuite( "GNGTest.h", 88, "MyTestSuite", suite_MyTestSuite, Tests_MyTestSuite );
 
 static class TestDescription_MyTestSuite_testUnitLink : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testUnitLink() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 78, "testUnitLink" ) {}
+ TestDescription_MyTestSuite_testUnitLink() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 92, "testUnitLink" ) {}
  void runTest() { suite_MyTestSuite.testUnitLink(); }
 } testDescription_MyTestSuite_testUnitLink;
 
 static class TestDescription_MyTestSuite_testFixArray : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 100, "testFixArray" ) {}
+ TestDescription_MyTestSuite_testFixArray() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 119, "testFixArray" ) {}
  void runTest() { suite_MyTestSuite.testFixArray(); }
 } testDescription_MyTestSuite_testFixArray;
 
 static class TestDescription_MyTestSuite_testImageData2D : public CxxTest::RealTestDescription {
 public:
- TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 107, "testImageData2D" ) {}
+ TestDescription_MyTestSuite_testImageData2D() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 126, "testImageData2D" ) {}
  void runTest() { suite_MyTestSuite.testImageData2D(); }
 } testDescription_MyTestSuite_testImageData2D;
+
+static class TestDescription_MyTestSuite_testDistance : public CxxTest::RealTestDescription {
+public:
+ TestDescription_MyTestSuite_testDistance() : CxxTest::RealTestDescription( Tests_MyTestSuite, suiteDescription_MyTestSuite, 132, "testDistance" ) {}
+ void runTest() { suite_MyTestSuite.testDistance(); }
+} testDescription_MyTestSuite_testDistance;
 
 #include <cxxtest/Root.cpp>

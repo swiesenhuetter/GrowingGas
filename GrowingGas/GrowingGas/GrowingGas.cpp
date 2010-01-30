@@ -43,3 +43,22 @@ void GrowingGas::learnRandomPattern ( void )
 	_algo.teach(_trainingPatterns.getAt(index));
 
 }
+
+boost::array<Unit*,2> GrowingGas::get2BestMatchingUnits( const Position& pattern)
+{
+	boost::array<Unit*,2> best2 = {0,0};
+	std::list<Unit>::iterator it;
+	for(it = _units.begin(); it != _units.end(); ++it)
+	{
+		if (best2[0])
+		{
+			double currentBestDistance = best2[0]->euclideanDistance(pattern);
+			double thisUnitsDistance = it->euclideanDistance(pattern);
+			if (thisUnitsDistance < currentBestDistance)
+			{
+				best2[0] = &(*it);
+			}
+		}
+	}
+	return best2;
+}

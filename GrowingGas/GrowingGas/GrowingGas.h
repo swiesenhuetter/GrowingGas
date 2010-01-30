@@ -16,7 +16,9 @@ public:
 	void addUnit(Unit newUnit) {
 		_units.push_back(newUnit);
 	}
-
+	void learnRandomPattern( void );
+	Unit* getBestMatchingUnit( const Pattern& pattern );
+	boost::array<Unit*,2> get2BestMatchingUnits( const Position& pattern);
 
 private:
 	LearningAlgorithm _algo;
@@ -26,5 +28,4 @@ private:
 	PatternSet& _trainingPatterns;
 	GrowingGas& operator=(const GrowingGas&) {}// forbidden because of non static reference data member
 
-	void learnRandomPattern( void );
 };

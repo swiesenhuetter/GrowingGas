@@ -203,8 +203,18 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						Description="Generating Test Code"
-						CommandLine="C:\Python26\python.exe ../../cxxtest/cxxtestgen.py --runner=ParenPrinter -o $(InputName).cpp $(InputFileName)&#x0D;&#x0A;"
-						Outputs="boo.cpp"
+						CommandLine="C:\Python26\python.exe ../../cxxtest/cxxtestgen.py --runner=ParenPrinter -o $(InputName).cpp $(InputFileName)"
+						Outputs="$(InputName).cpp"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						Description="Generating Test Code"
+						CommandLine="C:\Python26\python.exe ../../cxxtest/cxxtestgen.py --runner=ParenPrinter -o $(InputName).cpp $(InputFileName)"
+						Outputs="$(InputName).cpp"
 					/>
 				</FileConfiguration>
 			</File>

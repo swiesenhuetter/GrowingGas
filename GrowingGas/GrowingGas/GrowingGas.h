@@ -18,7 +18,7 @@ public:
 	}
 	void learnRandomPattern( void );
 	Unit* getBestMatchingUnit( const Pattern& pattern );
-	boost::array<Unit*,2> get2BestMatchingUnits( const Position& pattern);
+	std::array<Unit*,2> get2BestMatchingUnits( const Position& pattern);
 
 private:
 	LearningAlgorithm _algo;

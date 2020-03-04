@@ -1,23 +1,22 @@
 #include "StdAfx.h"
 #include "GrowingGas.h"
 #include "PatternSet.h"
-#pragma warning(disable:4127 4512 4100) // a constant in an if in boost header file and...
-#include <boost/random.hpp>
-#pragma warning(default:4127 4512 4100)
+#include <random>
 
 GrowingGas::GrowingGas(PatternSet& trainingPatterns)
 :_trainingPatterns(trainingPatterns)
 {
-	boost::mt19937 rng;                 // see http://en.wikipedia.org/wiki/Mersenne_twister
+	std::random_device rd;
+	std::mt19937 rng(rd());                 // see http://en.wikipedia.org/wiki/Mersenne_twister
 										// boost pseudo-random number generator
-	boost::uniform_int<> dist(0,_trainingPatterns.size());	// distribution that maps to 1..numPatterns
+	std::uniform_int_distribution<> dist(0,_trainingPatterns.size());	// distribution that maps to 1..numPatterns
 										// see random number distributions
-	boost::variate_generator<boost::mt19937&, boost::uniform_int<> > die(rng, dist);	// glues randomness with mapping
-	int index = die();
+
+	int index = dist(rng);
 	double x = _trainingPatterns.getAt(index).position[Pattern::horizontal];
 	double y = _trainingPatterns.getAt(index).position[Pattern::vertical];
 	Position p1 = {x,y};
-	index = die();
+	index = dist(rng);
 	x = _trainingPatterns.getAt(index).position[Pattern::horizontal];
 	y = _trainingPatterns.getAt(index).position[Pattern::vertical];
 	Position p2 = {x,y};
@@ -33,20 +32,21 @@ GrowingGas::~GrowingGas(void)
 
 void GrowingGas::learnRandomPattern ( void )
 {
-	boost::mt19937 rng;                 // see http://en.wikipedia.org/wiki/Mersenne_twister
+	std::random_device rd;
+	std::mt19937 rng(rd());                 // see http://en.wikipedia.org/wiki/Mersenne_twister
 										// boost pseudo-random number generator
-	boost::uniform_int<> dist(0,_trainingPatterns.size());	// distribution that maps to 1..numPatterns
+
+	std::uniform_int_distribution<> dist(0, _trainingPatterns.size());	// distribution that maps to 1..numPatterns
 										// see random number distributions
-	boost::variate_generator<boost::mt19937&, boost::uniform_int<> > die(rng, dist);	// glues randomness with mapping
-	int index = die();
+	int index = dist(rng);
 
 	_algo.teach(_trainingPatterns.getAt(index));
 
 }
 
-boost::array<Unit*,2> GrowingGas::get2BestMatchingUnits( const Position& pattern)
+std::array<Unit*,2> GrowingGas::get2BestMatchingUnits( const Position& pattern)
 {
-	boost::array<Unit*,2> best2 = {0,0};
+	std::array<Unit*,2> best2 = {0,0};
 	std::list<Unit>::iterator it;
 	for(it = _units.begin(); it != _units.end(); ++it)
 	{

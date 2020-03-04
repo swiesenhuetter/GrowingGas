@@ -1,19 +1,12 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GrowingGas", "GrowingGas\GrowingGas.vcproj", "{50D07B77-3DB9-44C8-B2B6-78F9FFB18967}"
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GNGTestSuite", "GNGTestSuite\GNGTestSuite.vcproj", "{0DECC8EF-22BF-4A7A-89BC-A1B8BA824B54}"
-	ProjectSection(ProjectDependencies) = postProject
-		{50D07B77-3DB9-44C8-B2B6-78F9FFB18967} = {50D07B77-3DB9-44C8-B2B6-78F9FFB18967}
-	EndProjectSection
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D241373-6C81-4256-875C-2ACFE3AAFCA0}"
 	ProjectSection(SolutionItems) = preProject
 		SolutionProperties.vsprops = SolutionProperties.vsprops
 	EndProjectSection
-EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcproj", "{55F19A6D-4D7A-42FE-8060-2D210B022925}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{E5BE07DC-CA24-459D-8246-CC09BC2E22EB}"
 	ProjectSection(SolutionItems) = preProject
@@ -21,11 +14,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "data", "data", "{E5BE07DC-C
 		data\pattern2.bmp = data\pattern2.bmp
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GrowingGas", "GrowingGas\GrowingGas.vcxproj", "{50D07B77-3DB9-44C8-B2B6-78F9FFB18967}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GNGTestSuite", "GNGTestSuite\GNGTestSuite.vcxproj", "{0DECC8EF-22BF-4A7A-89BC-A1B8BA824B54}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GUI", "GUI\GUI.vcxproj", "{55F19A6D-4D7A-42FE-8060-2D210B022925}"
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
 		Release|Win32 = Release|Win32
@@ -46,5 +41,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7A94222A-186D-4427-8FDA-41F7FC8A7CF3}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal

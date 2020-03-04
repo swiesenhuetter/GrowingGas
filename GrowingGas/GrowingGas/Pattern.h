@@ -1,10 +1,10 @@
 #pragma once
 
-#include <boost/array.hpp>
-#include <math.h>
+#include <cmath>
+#include <array>
 
-typedef boost::array<double,2> Position ;
-typedef boost::array<double,3> OutputValue;
+typedef std::array<double,2> Position ;
+typedef std::array<double,3> OutputValue;
 
 struct Pattern
 {

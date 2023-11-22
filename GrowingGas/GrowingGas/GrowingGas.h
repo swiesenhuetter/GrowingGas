@@ -10,7 +10,7 @@ class GrowingGas
 public:
 	GrowingGas(PatternSet& trainingPatterns);
 	~GrowingGas(void);
-	int numUnits(void) {
+	size_t numUnits(void) {
 		return _units.size();
 	}
 	void addUnit(Unit newUnit) {

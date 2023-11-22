@@ -36,7 +36,7 @@ public:
 		}
 
 		pixel *imageRGBData = reinterpret_cast<struct pixel*> (_square.GetData());
-		_squareData.createFromFixelArray(imageRGBData,_square.GetWidth(),_square.GetHeight());
+		_squareData.createFromPixelArray(imageRGBData,_square.GetWidth(),_square.GetHeight());
 	}
 
 	void tearDown( void )

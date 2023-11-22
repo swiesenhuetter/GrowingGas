@@ -9,25 +9,25 @@ ImageData2D::~ImageData2D(void)
 {
 }
 
-int ImageData2D::size(void)
+size_t ImageData2D::size(void)
 {
 	return _imageData.size();
 }
 
-const Pattern ImageData2D::getAt(int index)
+const Pattern ImageData2D::getAt(size_t index)
 {
-	int x = index % _width;
-	int y = index / _width;
+	auto x = index % _width;
+	auto y = index / _width;
 	Pattern pPos;
-	pPos.position[0] = x;
-	pPos.position[1] = y;
+	pPos.position[0] = static_cast<double>(x);
+	pPos.position[1] = static_cast<double>(y);
 	pPos.output[redIndex]	= _imageData[index].red;
 	pPos.output[greenIndex]	= _imageData[index].green;
 	pPos.output[blueIndex]	= _imageData[index].blue;
 	return pPos;
 }
 
-void ImageData2D::createFromFixelArray(pixel* firstPixel, int width, int height)
+void ImageData2D::createFromPixelArray(pixel* firstPixel, int width, int height)
 {
 	_width = width;
 	_height = height;

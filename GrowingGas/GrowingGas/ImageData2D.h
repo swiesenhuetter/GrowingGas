@@ -4,9 +4,9 @@
 
 struct pixel
 {
-	unsigned char red;
-	unsigned char green;
-	unsigned char blue;
+	unsigned char red{0};
+	unsigned char green{0};
+	unsigned char blue{0};
 };
 
 class ImageData2D 
@@ -15,9 +15,9 @@ class ImageData2D
 public:
 	ImageData2D();
 	virtual ~ImageData2D(void);
-	virtual int size();
-	virtual const Pattern getAt(int index); // not image specific ... interface
-	void createFromFixelArray(pixel* firstPixel, int width, int height);
+	virtual size_t size();
+	virtual const Pattern getAt(size_t index); // not image specific ... interface
+	void createFromPixelArray(pixel* firstPixel, int width, int height);
 
 	static const int redIndex	= 0;
 	static const int greenIndex = 1;
@@ -25,6 +25,6 @@ public:
 
 private:
 	std::vector<pixel> _imageData;
-	int _width;
-	int _height;
+	int _width{0};
+	int _height{0};
 };

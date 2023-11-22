@@ -7,6 +7,6 @@ struct PatternSet
 public:
 	PatternSet(void){}
 	virtual ~PatternSet(void){}
-	virtual int size() = 0;
-	virtual const Pattern getAt(int position) = 0;
+	virtual size_t size() = 0;
+	virtual const Pattern getAt(size_t position) = 0;
 };

@@ -35,7 +35,7 @@ public:
 			_square.SetRGB(i,i,redChannel,greenChannel,blueChannel);
 		}
 
-		pixel *imageRGBData = reinterpret_cast<struct pixel*> (_square.GetData());
+		Pixel *imageRGBData = reinterpret_cast<struct Pixel*> (_square.GetData());
 		_squareData.createFromPixelArray(imageRGBData,_square.GetWidth(),_square.GetHeight());
 	}
 

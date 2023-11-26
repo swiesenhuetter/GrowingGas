@@ -18,10 +18,10 @@ struct Pattern
 
 inline double euklideanDistance(const Position& p1, const Position& p2)
 {
-	double dist = 0;
-	Position::const_iterator it1 = p1.begin();
-	Position::const_iterator it2 = p2.begin();
-	for ( ; it1 != p1.end() && it2 != p2.end(); ++it1,++it2)
+	double dist = 0.0;
+	auto it1 = p1.cbegin();
+	auto it2 = p2.cbegin();
+	for ( ; it1 != p1.cend() && it2 != p2.cend(); ++it1,++it2)
 	{
 		dist += (*it1-*it2) * (*it1-*it2); 	
 	}

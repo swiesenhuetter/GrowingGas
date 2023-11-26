@@ -27,7 +27,7 @@ const Pattern ImageData2D::getAt(size_t index)
 	return pPos;
 }
 
-void ImageData2D::createFromPixelArray(pixel* firstPixel, int width, int height)
+void ImageData2D::createFromPixelArray(Pixel* firstPixel, int width, int height)
 {
 	_width = width;
 	_height = height;

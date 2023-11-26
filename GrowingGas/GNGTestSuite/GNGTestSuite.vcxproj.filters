@@ -20,6 +20,9 @@
     <ClCompile Include="GNGTest.cpp">
       <Filter>Test Code Generated</Filter>
     </ClCompile>
+    <ClCompile Include="catchtest.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="GNGTest.h">

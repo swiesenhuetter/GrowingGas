@@ -18,8 +18,9 @@ public:
 	bool isSingle( void );
 	std::list<Unit*> getNeighbours(void);
 	double euclideanDistance(const Position& pattern);
+	const Position& loc(void) const;
 
 private:
-	Position _position;
+	Position _position{};
 	std::list<Edge> _edges;
 };

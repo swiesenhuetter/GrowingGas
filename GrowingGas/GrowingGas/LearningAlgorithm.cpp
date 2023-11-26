@@ -15,7 +15,7 @@ LearningAlgorithm::~LearningAlgorithm(void)
 {
 }
 
-void LearningAlgorithm::teach(const Pattern& pattern)
+void LearningAlgorithm::teach(const Position& pattern)
 {
 	pattern;
 	// find best matching unit in _net (bmu)

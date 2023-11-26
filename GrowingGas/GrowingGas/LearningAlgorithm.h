@@ -9,7 +9,7 @@ public:
 	LearningAlgorithm( void );
 	~LearningAlgorithm( void );
 
-	void teach(const Pattern& pattern);
+	void teach(const Position& pattern);
 	void initialize(GrowingGas& net);
 private:
 	GrowingGas* _net;

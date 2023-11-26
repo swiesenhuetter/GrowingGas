@@ -77,3 +77,8 @@ double Unit::euclideanDistance(const Position& pattern)
 	dist = ::euklideanDistance(_position,pattern);
 	return dist;
 }
+
+const Position& Unit::loc(void) const
+{
+	return _position;
+}

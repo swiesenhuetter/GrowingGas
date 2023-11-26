@@ -3,34 +3,29 @@
 #include "PatternSet.h"
 #include <random>
 
-GrowingGas::GrowingGas(PatternSet& trainingPatterns)
-:_trainingPatterns(trainingPatterns)
+
+
+GrowingGas::GrowingGas(const std::vector<Position>& trainingPatterns) : _trainingPatterns(trainingPatterns)
 {
+	// initialize two units
 	std::random_device rd;
-	std::mt19937 rng(rd());                 // see http://en.wikipedia.org/wiki/Mersenne_twister
+	std::mt19937 rng(rd());             // see http://en.wikipedia.org/wiki/Mersenne_twister
 										// boost pseudo-random number generator
 	std::uniform_int_distribution<size_t> dist(0,_trainingPatterns.size());	// distribution that maps to 1..numPatterns
 										// see random number distributions
 
-	size_t index = dist(rng);
-	double x = _trainingPatterns.getAt(index).position[Pattern::horizontal];
-	double y = _trainingPatterns.getAt(index).position[Pattern::vertical];
-	Position p1 = {x,y};
-	index = dist(rng);
-	x = _trainingPatterns.getAt(index).position[Pattern::horizontal];
-	y = _trainingPatterns.getAt(index).position[Pattern::vertical];
-	Position p2 = {x,y};
+	size_t index1 = dist(rng);
+	size_t index2 = dist(rng);
+	;
+	Position p1{ _trainingPatterns[index1] };
+	Position p2{ _trainingPatterns[index2] };
 	Unit u1(p1);
 	Unit u2(p2);
 	addUnit(u1);
 	addUnit(u2);
 }
 
-GrowingGas::~GrowingGas(void)
-{
-}
-
-void GrowingGas::learnRandomPattern ( void )
+void GrowingGas::learnRandomPattern( void )
 {
 	std::random_device rd;
 	std::mt19937 rng(rd());                 // see http://en.wikipedia.org/wiki/Mersenne_twister
@@ -40,7 +35,7 @@ void GrowingGas::learnRandomPattern ( void )
 										// see random number distributions
 	auto index = dist(rng);
 
-	_algo.teach(_trainingPatterns.getAt(index));
+	_algo.teach(_trainingPatterns[index]);
 
 }
 

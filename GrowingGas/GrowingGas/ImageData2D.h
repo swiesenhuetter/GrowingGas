@@ -2,7 +2,7 @@
 #include "patternset.h"
 #include <vector>
 
-struct pixel
+struct Pixel
 {
 	unsigned char red{0};
 	unsigned char green{0};
@@ -17,14 +17,14 @@ public:
 	virtual ~ImageData2D(void);
 	virtual size_t size();
 	virtual const Pattern getAt(size_t index); // not image specific ... interface
-	void createFromPixelArray(pixel* firstPixel, int width, int height);
+	void createFromPixelArray(Pixel* firstPixel, int width, int height);
 
 	static const int redIndex	= 0;
 	static const int greenIndex = 1;
 	static const int blueIndex	= 2;
 
 private:
-	std::vector<pixel> _imageData;
+	std::vector<Pixel> _imageData;
 	int _width{0};
 	int _height{0};
 };

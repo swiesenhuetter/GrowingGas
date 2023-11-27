@@ -19,6 +19,8 @@ public:
 	std::list<Unit*> getNeighbours(void);
 	double euclideanDistance(const Position& pattern);
 	const Position& loc(void) const;
+	
+	void towards(const Pattern& pos, double fract);
 
 private:
 	Position _position{};

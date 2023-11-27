@@ -18,12 +18,12 @@ const Pattern ImageData2D::getAt(size_t index)
 {
 	auto x = index % _width;
 	auto y = index / _width;
-	Pattern pPos;
-	pPos.position[0] = static_cast<double>(x);
-	pPos.position[1] = static_cast<double>(y);
-	pPos.output[redIndex]	= _imageData[index].red;
-	pPos.output[greenIndex]	= _imageData[index].green;
-	pPos.output[blueIndex]	= _imageData[index].blue;
+
+	Position pos{ static_cast<double>(x), static_cast<double>(y) };
+	Pattern pPos(pos) ;
+	//pPos.output[redIndex]	= _imageData[index].red;
+	//pPos.output[greenIndex]	= _imageData[index].green;
+	//pPos.output[blueIndex]	= _imageData[index].blue;
 	return pPos;
 }
 

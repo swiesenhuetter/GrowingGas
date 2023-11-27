@@ -4,15 +4,17 @@
 #include <array>
 
 typedef std::array<double,2> Position ;
-typedef std::array<double,3> OutputValue;
 
 struct Pattern
 {
-	Position position;
-	OutputValue output;
+	Pattern(Position pos) : position(pos) {}
 
-	static const int horizontal	= 0;
-	static const int vertical = 1;
+	Position position;
+
+	Pattern operator+(Pattern other) const;
+	Pattern operator-(Pattern other) const;
+	Pattern operator*(double factor) const;
+
 };
 
 

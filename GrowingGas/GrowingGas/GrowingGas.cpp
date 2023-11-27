@@ -2,6 +2,7 @@
 #include "GrowingGas.h"
 #include "PatternSet.h"
 #include <random>
+#include <iostream>
 
 
 
@@ -23,6 +24,8 @@ GrowingGas::GrowingGas(const std::vector<Position>& trainingPatterns) : _trainin
 	Unit u2(p2);
 	addUnit(u1);
 	addUnit(u2);
+
+	_algo.initialize(*this);
 }
 
 void GrowingGas::learnRandomPattern( void )
@@ -31,28 +34,42 @@ void GrowingGas::learnRandomPattern( void )
 	std::mt19937 rng(rd());                 // see http://en.wikipedia.org/wiki/Mersenne_twister
 										// boost pseudo-random number generator
 
-	std::uniform_int_distribution<size_t> dist(0, _trainingPatterns.size());	// distribution that maps to 1..numPatterns
+	std::uniform_int_distribution<size_t> dist(0, _trainingPatterns.size()-1);	// distribution that maps to 1..numPatterns
 										// see random number distributions
 	auto index = dist(rng);
 
-	_algo.teach(_trainingPatterns[index]);
+	auto err = _algo.teach(_trainingPatterns[index]);
+
+	std::cout << err << "err \n";
 
 }
 
 std::array<Unit*,2> GrowingGas::get2BestMatchingUnits( const Position& pattern)
 {
-	std::array<Unit*,2> best2 = {0,0};
+	if (_units.empty())
+		return std::array<Unit*,2> {nullptr, nullptr};
+
+	std::array<Unit*, 2> best2{ &_units.front(), &_units.front()};
+
+	double shortestDistance = best2[0]->euclideanDistance(pattern);
+	double secondShortestDistance = shortestDistance;
+
 	std::list<Unit>::iterator it;
 	for(it = _units.begin(); it != _units.end(); ++it)
 	{
-		if (best2[0])
+		double thisUnitsDistance = it->euclideanDistance(pattern);
+		if (thisUnitsDistance < shortestDistance)
 		{
-			double currentBestDistance = best2[0]->euclideanDistance(pattern);
-			double thisUnitsDistance = it->euclideanDistance(pattern);
-			if (thisUnitsDistance < currentBestDistance)
-			{
-				best2[0] = &(*it);
-			}
+			best2[1] = best2[0];
+			secondShortestDistance = shortestDistance;
+			best2[0] = &(*it);
+			shortestDistance = thisUnitsDistance;
+			
+		}
+		else if (thisUnitsDistance < secondShortestDistance)
+		{
+			best2[1] = &(*it);
+			secondShortestDistance = thisUnitsDistance;
 		}
 	}
 	return best2;

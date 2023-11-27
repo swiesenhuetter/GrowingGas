@@ -82,3 +82,9 @@ const Position& Unit::loc(void) const
 {
 	return _position;
 }
+
+void Unit::towards(const Pattern& pat, double fract)
+{
+	auto new_pat = pat + Pattern(pat - _position) * fract;
+	_position = new_pat.position;
+}

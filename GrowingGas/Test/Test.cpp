@@ -69,9 +69,6 @@ TEST_CASE("100 Disk points", "[disk]") {
 	for (int i = 0; i < 100; ++i) {
 		gas.learnRandomPattern();
 	}
-	
-	
-	
 }
 
 

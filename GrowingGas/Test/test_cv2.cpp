@@ -3,6 +3,8 @@
 #include <opencv2/highgui.hpp>
 #include <iostream>
 
+#include <catch.hpp>
+
 using namespace cv;
 
 int read_display_convert()
@@ -22,3 +24,8 @@ int read_display_convert()
     }
     return 0;
 }
+
+//TEST_CASE("open an image using opencv", "[image]")
+//{
+//    read_display_convert();
+//}

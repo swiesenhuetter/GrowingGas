@@ -15,7 +15,7 @@ END_EVENT_TABLE()
 
 bool BasicApplication::OnInit()
 {
-	BasicFrame *frame = new BasicFrame(_T("Bitmap Test"), 50, 50, 450, 300);
+	BasicFrame *frame = new BasicFrame(_T("Bitmap Test"), 50, 50, 500, 500);
 	frame->Show(TRUE);
 	SetTopWindow(frame);
 	return TRUE;

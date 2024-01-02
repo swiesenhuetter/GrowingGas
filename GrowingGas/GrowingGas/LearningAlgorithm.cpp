@@ -40,7 +40,8 @@ double LearningAlgorithm::teach(const Position& pattern)
 		assert(false);
 	}
 
-	best_matching->link(*second_best);
+	Edge edge = best_matching->link(*second_best);
+	edge._age = 0;
 
 	double err = best_matching->euclideanDistance(pattern);
 

@@ -3,8 +3,8 @@
 
 Edge::Edge(void)
 :_age(0)
-,_u1(0)
-,_u2(0)
+,_u1(nullptr)
+,_u2(nullptr)
 {
 }
 

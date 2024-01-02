@@ -16,13 +16,25 @@ Unit::Unit(Position pos)
 
 Edge Unit::link(Unit& newNeighbour)
 {
-	Edge newEdge(this,&newNeighbour);
 	if (! isNeigbour(newNeighbour))
 	{
+		Edge newEdge(this, &newNeighbour);
 		_edges.push_back(newEdge);
 		newNeighbour._edges.push_back(newEdge);
+		return newEdge;
 	}
-	return newEdge;
+	else
+	{
+		std::list<Edge>::iterator it = _edges.begin();
+		for (; it != _edges.end(); ++it)
+		{
+			auto edge = *it;
+			if (edge._u1 == &newNeighbour || edge._u2 == &newNeighbour)
+				return edge;
+		}
+		return Edge();
+
+	}
 }
 
 void Unit::unlink(Unit& exNeighbour)

@@ -13,7 +13,6 @@ public:
    void getImageData (ImageData2D& data);
 
 private:
-    wxImage* m_bmpImage;
     wxBitmap* m_bitmap;
     wxTimer* m_timer;
 	// list of dots

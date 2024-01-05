@@ -12,7 +12,7 @@ GrowingGas::GrowingGas(const std::vector<Position>& trainingPatterns) : _trainin
 	std::random_device rd;
 	std::mt19937 rng(rd());             // see http://en.wikipedia.org/wiki/Mersenne_twister
 										// boost pseudo-random number generator
-	std::uniform_int_distribution<size_t> dist(0,_trainingPatterns.size());	// distribution that maps to 1..numPatterns
+	std::uniform_int_distribution<size_t> dist(0,_trainingPatterns.size()-1);	// distribution that maps to 1..numPatterns
 										// see random number distributions
 
 	size_t index1 = dist(rng);

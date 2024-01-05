@@ -65,80 +65,16 @@ public:
 		TS_ASSERT_EQUALS( numberOfUnits, 2 );
 	}
 
-	void testTwoBest ( void )
-	{
-		GrowingGas gg(_squareData);
-		Position pos1 = {1.0, 1.0};
-		boost::array<Unit*,2> best2 = {0,0};
-		best2 = gg.get2BestMatchingUnits(pos1);
-		TS_ASSERT(best2[0]);
-		TS_ASSERT(best2[1]);
-		if (best2[0] && best2[1])
-		{
-			TS_ASSERT(best2[0]->euclideanDistance(pos1) <= best2[1]->euclideanDistance(pos1));
-		}
-	}
 
 private:
 	wxImage _square;
 	ImageData2D _squareData;
 };
 
-
-class MyTestSuite : public CxxTest::TestSuite
-{
-public:
-
-	void testUnitLink ( void )
-	{
-		Position pos1 = {1.0, 1.0};
-		Position pos2 = {2.0, 2.0};
-		Unit u1(pos1);
-		Unit u2(pos2);
-		Unit u3;
-		u1.link(u2);
-		TS_ASSERT(u1.isNeigbour(u2));
-		TS_ASSERT(u2.isNeigbour(u1));
-		TS_ASSERT(! u2.isNeigbour(u2));
-		TS_ASSERT(! u1.isNeigbour(u1));
-		TS_ASSERT(! u3.isNeigbour(u1));
-		TS_ASSERT(! u3.isNeigbour(u2));
-		TS_ASSERT(! u1.isNeigbour(u3));
-		TS_ASSERT(! u2.isNeigbour(u3));
-
-		TS_ASSERT(! u1.isSingle());
-		TS_ASSERT(! u2.isSingle());
-		TS_ASSERT(u3.isSingle());
-
-		TS_ASSERT_EQUALS(u1.getNeighbours().size(), 1);
-		TS_ASSERT_EQUALS(u2.getNeighbours().size(), 1);
-		TS_ASSERT_EQUALS(u3.getNeighbours().size(), 0);
-
-	}
-
-	void testFixArray( void )
-	{
-		boost::array<int,7> fixArray = {1,2,3,4};
-		TS_ASSERT_EQUALS( fixArray[3], 4 );
-		TS_ASSERT_EQUALS( fixArray[4], 0 );
-	}
-
 	void testImageData2D( void )
 	{
 		ImageData2D data;
 		TS_ASSERT_EQUALS( data.size() , 0 );
-	}
-
-	void testDistance( void )
-	{
-		Position pos1 = {1.0, 1.0};
-		Position pos2 = {1.0, 2.0};
-		Unit u1(pos1);
-		Unit u2(pos2);
-		double dist = u1.euclideanDistance(pos2);
-		TS_ASSERT_DELTA(dist,1.0,0.00001);
-		dist = u1.euclideanDistance(pos1);
-		TS_ASSERT_DELTA(dist,0.0,0.00001);
 	}
 
 };

@@ -72,6 +72,65 @@ TEST_CASE("100 Disk points", "[disk]") {
 }
 
 
+TEST_CASE("Unit Behaviour", "[units]")
+{
+	Position pos1 = { 1.0, 1.0 };
+	Position pos2 = { 2.0, 2.0 };
+	Unit u1(pos1);
+	Unit u2(pos2);
+	Unit u3;
+	u1.link(u2);
+	REQUIRE(u1.isNeigbour(u2));
+	REQUIRE(u2.isNeigbour(u1));
+	REQUIRE(!u2.isNeigbour(u2));
+	REQUIRE(!u1.isNeigbour(u1));
+	REQUIRE(!u3.isNeigbour(u1));
+	REQUIRE(!u3.isNeigbour(u2));
+	REQUIRE(!u1.isNeigbour(u3));
+	REQUIRE(!u2.isNeigbour(u3));
+
+	REQUIRE(!u1.isSingle());
+	REQUIRE(!u2.isSingle());
+	REQUIRE(u3.isSingle());
+
+	REQUIRE(u1.getNeighbours().size() == 1);
+	REQUIRE(u2.getNeighbours().size() == 1);
+	REQUIRE(u3.getNeighbours().size() == 0);
+}
+
+
+TEST_CASE("Unit Distance", "[distance]")
+{
+	Position pos1 = { 1.0, 1.0 };
+	Position pos2 = { 1.0, 2.0 };
+	Unit u1(pos1);
+	Unit u2(pos2);
+	double dist = u1.euclideanDistance(pos2);
+	REQUIRE_THAT(dist, Catch::Matchers::WithinAbs(1.0, 1e-10));
+	dist = u1.euclideanDistance(pos1);
+	REQUIRE_THAT(dist, Catch::Matchers::WithinAbs(0.0, 1e-10));
+}
+
+
+TEST_CASE("Best Unit Search", "[best]")
+{
+	Position pos1 = { 1.0, 1.0 };
+	Position pos2 = { 1.0, 2.0 };
+	Position t_pos = { 1.0, 2.1 };
+
+	std::vector<Position> t_data{ pos1, pos2 };
+
+	GrowingGas gg(t_data);
+	std::array<Unit*, 2> best2 = { 0,0 };
+	best2 = gg.get2BestMatchingUnits(pos1);
+	REQUIRE(best2[0]);
+	REQUIRE(best2[1]);
+	if (best2[0] && best2[1])
+	{
+		REQUIRE(best2[0]->euclideanDistance(t_pos) <= best2[1]->euclideanDistance(t_pos));
+	}
+}
+
 int main(int argc, char* argv[]) {
     Catch::Session session;
     int result = session.run(argc, argv);

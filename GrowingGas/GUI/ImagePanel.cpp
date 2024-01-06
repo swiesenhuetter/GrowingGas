@@ -29,7 +29,12 @@ void ImagePanel::OnTimer(wxTimerEvent& WXUNUSED(event))
 	// get windows size
 	int w{ 0 }, h{ 0 };
 	GetSize(&w, &h);
-	
+
+void ImagePanel::OnTimer(wxTimerEvent& WXUNUSED(event))
+{
+	int w = m_bitmap->GetWidth();
+	int h = m_bitmap->GetHeight();
+
 	// random pixel from bitmap
 	int x = rand() % w;
 	int y = rand() % h;

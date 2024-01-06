@@ -40,7 +40,7 @@ void GrowingGas::learnRandomPattern( void )
 
 	auto err = _algo.teach(_trainingPatterns[index]);
 
-	std::cout << err << "err \n";
+	std::cout << err << " [err]\n";
 
 }
 

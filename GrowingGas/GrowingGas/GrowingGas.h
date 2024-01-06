@@ -20,7 +20,6 @@ public:
 		_units.push_back(newUnit);
 	}
 	void learnRandomPattern( void );
-	Unit* getBestMatchingUnit( const Pattern& pattern );
 	std::array<Unit*,2> get2BestMatchingUnits( const Position& pattern);
 
 private:

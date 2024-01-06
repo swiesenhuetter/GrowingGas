@@ -88,6 +88,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="colors.cpp" />
     <ClCompile Include="GUI.cpp" />
     <ClCompile Include="ImagePanel.cpp" />
     <ClCompile Include="stdafx.cpp">
@@ -96,6 +97,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="colors.h" />
     <ClInclude Include="GUI.h" />
     <ClInclude Include="ImagePanel.h" />
     <ClInclude Include="Resource.h" />

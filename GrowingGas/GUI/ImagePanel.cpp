@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "ImagePanel.h"
 #include <wx/dcbuffer.h>
+#include "colors.h"
+
 
 BEGIN_EVENT_TABLE ( ImagePanel, wxPanel )
     EVT_ERASE_BACKGROUND(ImagePanel::OnEraseBackground)
@@ -62,11 +64,11 @@ void ImagePanel::OnPaint(wxPaintEvent& WXUNUSED(event))
 		angle = 0.02 * i;
 		x = 250 + 10.0 * angle * cos(angle);
 		y = 250 + 10.0 * angle * sin(angle);
-		dc.SetBrush(wxBrush(wxColor(190, 0, 0, 128))); // red, half transparent
-		dc.SetPen(wxPen(wxColor(190, 0, 0, 128))); // 0 = transparent)
+		dc.SetBrush(wxBrush(Color::red)); // red, half transparent
+		dc.SetPen(wxPen(Color::red)); // 0 = transparent)
 		dc.DrawCircle(wxPoint(x,y), 5 /* radius */ );
-		dc.SetBrush(wxBrush(wxColor(0, 190, 0, 128))); // red, half transparent
-		dc.SetPen(wxPen(wxColor(0, 190, 0, 128))); // 0 = transparent)
+		dc.SetBrush(wxBrush(Color::green)); // green, half transparent
+		dc.SetPen(wxPen(Color::green)); // 0 = transparent)
 		x = 250 + 10.0 * angle * cos(3.1416 + angle);
 		y = 250 + 10.0 * angle * sin(3.1416 + angle);
 		dc.DrawCircle(wxPoint(x, y), 5 /* radius */);
@@ -75,13 +77,12 @@ void ImagePanel::OnPaint(wxPaintEvent& WXUNUSED(event))
 	// paint a transparent circle
 	auto img = m_bitmap->ConvertToImage();
 
-	dc.SetBrush( wxBrush( wxColor(0,0,255,0) ) ); // 128 = half transparent blue
-    dc.SetPen( wxPen( wxColor(0,0,0,100) ) ); // 0 = transparent
 	for (auto p : m_dots)
 	{
         auto r = img.GetRed(p.x, p.y);
         auto g = img.GetGreen(p.x, p.y);
-        dc.SetBrush( wxBrush( wxColor(r,g,0,10) ) ); // 128 = half transparent blue
+        dc.SetPen( wxPen( wxColor(r,g,0,10) ) );
+		dc.SetBrush( wxBrush( wxColor(r,g,0,10) ) );
         dc.DrawCircle(p, 10 /* radius */ );
     }
 }

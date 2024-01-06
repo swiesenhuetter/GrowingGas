@@ -8,6 +8,7 @@ BEGIN_EVENT_TABLE ( ImagePanel, wxPanel )
     EVT_ERASE_BACKGROUND(ImagePanel::OnEraseBackground)
 	EVT_PAINT(ImagePanel::OnPaint)
 	EVT_TIMER(-1, ImagePanel::OnTimer)
+	EVT_BUTTON(wxID_EXIT, ImagePanel::OnExit)
 END_EVENT_TABLE()
 
 ImagePanel::ImagePanel(wxFrame* parentFrame)
@@ -17,12 +18,17 @@ ImagePanel::ImagePanel(wxFrame* parentFrame)
 	m_bitmap = new wxBitmap( 500, 500, 24 );
 	m_timer = new wxTimer(this);
 	m_timer->Start(0);
+	m_layout = new wxBoxSizer(wxVERTICAL);
+	SetSizer(m_layout);
+	m_exit_button = new wxButton(this, wxID_EXIT, wxT("Exit"));
+	m_layout->Add(m_exit_button, 0, wxALIGN_CENTER);
 }
 
 ImagePanel::~ImagePanel(void)
 {
 	delete m_bitmap;
 	delete m_timer;
+	delete m_exit_button;
 }
 
 
@@ -31,12 +37,7 @@ void ImagePanel::OnTimer(wxTimerEvent& WXUNUSED(event))
 	// get windows size
 	int w{ 0 }, h{ 0 };
 	GetSize(&w, &h);
-
-void ImagePanel::OnTimer(wxTimerEvent& WXUNUSED(event))
-{
-	int w = m_bitmap->GetWidth();
-	int h = m_bitmap->GetHeight();
-
+	
 	// random pixel from bitmap
 	int x = rand() % w;
 	int y = rand() % h;
@@ -90,4 +91,11 @@ void ImagePanel::OnPaint(wxPaintEvent& WXUNUSED(event))
 void ImagePanel::OnEraseBackground(wxEraseEvent& WXUNUSED(event))
 {
 
+}
+
+void ImagePanel::OnExit(wxCommandEvent& WXUNUSED(event))
+{
+	auto parent = dynamic_cast<wxFrame*>(GetParent());
+	parent->Close(true);
+	//wxGetApp().ExitMainLoop();
 }

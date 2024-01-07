@@ -40,12 +40,16 @@ double LearningAlgorithm::teach(const Position& pattern)
 		assert(false);
 	}
 
-	Edge edge = best_matching->link(*second_best);
-	edge._age = 0;
+	auto edge = best_matching->link(*second_best);
+	if (edge) {
+		edge->_age = 0;
+		_net->_edges.push_back(edge);
+	}
 
 	double err = best_matching->euclideanDistance(pattern);
 
 	best_matching->towards(pattern, e_b);
+	second_best->towards(pattern, e_n);
 
 	return err;
 

@@ -14,26 +14,24 @@ Unit::Unit(Position pos)
 {
 }
 
-Edge Unit::link(Unit& newNeighbour)
+std::shared_ptr<Edge> Unit::link(Unit& newNeighbour)
 {
 	if (! isNeigbour(newNeighbour))
 	{
-		Edge newEdge(this, &newNeighbour);
-		_edges.push_back(newEdge);
-		newNeighbour._edges.push_back(newEdge);
-		return newEdge;
+		_edges.emplace_back(std::make_shared<Edge>(this,&newNeighbour));
+		newNeighbour._edges.push_back(_edges.back());
+		return _edges.back();
 	}
 	else
 	{
-		std::list<Edge>::iterator it = _edges.begin();
+		auto it = _edges.begin();
 		for (; it != _edges.end(); ++it)
 		{
 			auto edge = *it;
-			if (edge._u1 == &newNeighbour || edge._u2 == &newNeighbour)
+			if (edge->_u1 == &newNeighbour || edge->_u2 == &newNeighbour)
 				return edge;
 		}
-		return Edge();
-
+		return nullptr;
 	}
 }
 
@@ -49,13 +47,13 @@ void Unit::unlink(Unit& exNeighbour)
 std::list<Unit*> Unit::getNeighbours(void)
 {
 	std::list<Unit*> neighbours;
-	std::list<Edge>::iterator it = _edges.begin();
+	auto it = _edges.begin();
 	for (;it != _edges.end() ; ++it)
 	{
-		Unit* firstUnit = it->_u1;
+		Unit* firstUnit = (*it)->_u1;
 		if (firstUnit == this)
 		{
-			neighbours.push_back(it->_u2);
+			neighbours.push_back((*it)->_u2);
 		}
 		else
 		{

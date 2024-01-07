@@ -3,6 +3,7 @@
 #include <list>
 #include "Pattern.h"
 #include "Edge.h"
+#include <memory>
 
 class Unit
 {
@@ -11,7 +12,7 @@ public:
 	Unit(Position pos);
 	~Unit(void);
 
-	Edge link(Unit& newNeighbour);
+	std::shared_ptr<Edge> link(Unit& newNeighbour);
 	void unlink(Unit& exNeighbour);
 	
 	bool isNeigbour(const Unit& other);
@@ -24,5 +25,5 @@ public:
 
 private:
 	Position _position{};
-	std::list<Edge> _edges;
+	std::list<std::shared_ptr<Edge>> _edges;
 };

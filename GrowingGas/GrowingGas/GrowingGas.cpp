@@ -8,24 +8,12 @@
 
 GrowingGas::GrowingGas(const std::vector<Position>& trainingPatterns) : _trainingPatterns(trainingPatterns)
 {
-    // initialize two units
-    std::random_device rd;
-    std::mt19937 rng(rd());             // see http://en.wikipedia.org/wiki/Mersenne_twister
-    // boost pseudo-random number generator
-    std::uniform_int_distribution<size_t> dist(0, _trainingPatterns.size() - 1);	// distribution that maps to 1..numPatterns
-    // see random number distributions
-
-    size_t index1 = dist(rng);
-    size_t index2 = dist(rng);
-    ;
-    Position p1{ _trainingPatterns[index1] };
-    Position p2{ _trainingPatterns[index2] };
-    Unit u1(p1);
-    Unit u2(p2);
+    _algo.initialize(*this);
+    Unit u1;
+    Unit u2;
     addUnit(u1);
     addUnit(u2);
-
-    _algo.initialize(*this);
+    learnRandomPattern();
 }
 
 void GrowingGas::learnRandomPattern(void)
@@ -49,7 +37,7 @@ std::array<Unit*, 2> GrowingGas::get2BestMatchingUnits(const Position& pattern)
     if (_units.empty())
         return std::array<Unit*, 2> {nullptr, nullptr};
 
-    std::array<Unit*, 2> best2{ &_units.front(), &_units.front() };
+    std::array<Unit*, 2> best2{ &_units.front(), &_units.back()};
 
     double shortestDistance = best2[0]->euclideanDistance(pattern);
     double secondShortestDistance = shortestDistance;

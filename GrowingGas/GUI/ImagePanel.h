@@ -13,12 +13,15 @@ public:
    void getImageData (ImageData2D& data);
 
 private:
-	wxBitmap* m_bitmap{};
+	wxBitmap* m_bitmap_spir{};
+	wxBitmap* m_bitmap_paint{};
     wxTimer* m_timer{};
 	wxButton* m_exit_button{};
 	wxBoxSizer* m_layout{};
 	// list of dots 
 	std::vector<wxPoint> m_dots;
+
+	void paint_spiral(wxBitmap* bmp);
 
 	void OnPaint(wxPaintEvent& WXUNUSED(event));
 	void OnTimer(wxTimerEvent& WXUNUSED(event));

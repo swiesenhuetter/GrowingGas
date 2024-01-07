@@ -22,6 +22,7 @@ public:
 	const Position& loc(void) const;
 	
 	void towards(const Pattern& pos, double fract);
+	void age_increment();
 
 private:
 	Position _position{};

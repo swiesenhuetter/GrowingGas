@@ -1,5 +1,6 @@
 #include "StdAfx.h"
 #include "Unit.h"
+#include <algorithm>
 
 Unit::Unit(void)
 {
@@ -16,32 +17,42 @@ Unit::Unit(Position pos)
 
 std::shared_ptr<Edge> Unit::link(Unit& newNeighbour)
 {
-	if (! isNeigbour(newNeighbour))
-	{
-		_edges.emplace_back(std::make_shared<Edge>(this,&newNeighbour));
-		newNeighbour._edges.push_back(_edges.back());
-		return _edges.back();
-	}
-	else
-	{
-		auto it = _edges.begin();
-		for (; it != _edges.end(); ++it)
-		{
-			auto edge = *it;
-			if (edge->_u1 == &newNeighbour || edge->_u2 == &newNeighbour)
-				return edge;
-		}
-		return nullptr;
-	}
+    if (isNeigbour(newNeighbour))
+    {
+        unlink(newNeighbour);
+    }
+    _edges.emplace_back(std::make_shared<Edge>(this, &newNeighbour));
+    newNeighbour._edges.push_back(_edges.back());
+    return _edges.back();
 }
 
 void Unit::unlink(Unit& exNeighbour)
 {
-	if(isNeigbour(exNeighbour))
-	{
-		// remove
-	}
-	// smilar to link ?
+    if (isNeigbour(exNeighbour))
+    {
+        auto it = _edges.begin();
+        for (; it != _edges.end(); ++it)
+        {
+            Unit* firstUnit = (*it)->_u1;
+            Unit* secondUnit = (*it)->_u2;
+            if (firstUnit == &exNeighbour || secondUnit == &exNeighbour)
+            {
+                _edges.erase(it);
+                break;
+            }
+        }
+        auto it2 = exNeighbour._edges.begin();
+        for (; it2 != exNeighbour._edges.end(); ++it2)
+        {
+            Unit* firstUnit = (*it2)->_u1;
+            Unit* secondUnit = (*it2)->_u2;
+            if (firstUnit == this || secondUnit == this)
+            {
+                exNeighbour._edges.erase(it2);
+                break;
+            }
+        }
+    }
 }
 
 std::list<Unit*> Unit::getNeighbours(void)
@@ -97,4 +108,9 @@ void Unit::towards(const Pattern& pat, double fract)
 {
 	auto new_pat = pat + Pattern(pat - _position) * fract;
 	_position = new_pat.position;
+}
+
+void Unit::age_increment()
+{
+	std::for_each(_edges.begin(),_edges.end(),[](auto edge){edge->_age++;});
 }

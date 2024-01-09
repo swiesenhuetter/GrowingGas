@@ -16,6 +16,16 @@ GrowingGas::GrowingGas(const std::vector<Position>& trainingPatterns) : _trainin
     learnRandomPattern();
 }
 
+
+void GrowingGas::apply(Position pos)
+{
+    _unit_errors.clear();
+    for (auto& unit : _units)
+    {
+        _unit_errors.push_back(unit.euclideanDistance(pos));
+    }
+}
+
 void GrowingGas::learnRandomPattern(void)
 {
     std::random_device rd;
@@ -42,10 +52,11 @@ std::array<Unit*, 2> GrowingGas::get2BestMatchingUnits(const Position& pattern)
     double shortestDistance = best2[0]->euclideanDistance(pattern);
     double secondShortestDistance = shortestDistance;
 
-    std::list<Unit>::iterator it;
-    for (it = _units.begin(); it != _units.end(); ++it)
+    auto it = _units.begin();
+    auto it_err = _unit_errors.begin();
+    for (; it != _units.end() && it_err != _unit_errors.end(); ++it, ++it_err)
     {
-        double thisUnitsDistance = it->euclideanDistance(pattern);
+        double thisUnitsDistance = *it_err;
         if (thisUnitsDistance < shortestDistance)
         {
             best2[1] = best2[0];

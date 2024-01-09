@@ -30,6 +30,9 @@ void LearningAlgorithm::move_neigbourhood(
 
 double LearningAlgorithm::teach(const Position& pattern)
 {
+
+	_net->apply(pattern);
+
 	auto res = _net->get2BestMatchingUnits(pattern);
 	
 	auto best_matching = res[0];
@@ -47,9 +50,7 @@ double LearningAlgorithm::teach(const Position& pattern)
 
 
 	auto edge = best_matching->link(*second_best);
-	if (edge) {
-		_net->_edges.push_back(edge);
-	}
+    _net->_edges.push_back(edge);
 
 	double err = best_matching->euclideanDistance(pattern);
 

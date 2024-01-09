@@ -20,6 +20,9 @@ public:
     void addUnit(Unit newUnit) {
         _units.push_back(newUnit);
     }
+
+    void apply(Position pos);
+
     void learnRandomPattern( void );
     std::array<Unit*,2> get2BestMatchingUnits( const Position& pattern);
 
@@ -29,6 +32,7 @@ private:
     LearningAlgorithm _algo;
     std::list<Unit> _units;
     std::list<std::shared_ptr<Edge>> _edges;
+    std::vector<double> _unit_errors;
 
     const std::vector<Position>& _trainingPatterns;
     GrowingGas& operator=(const GrowingGas&) {}// forbidden because of non static reference data member

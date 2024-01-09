@@ -121,8 +121,9 @@ TEST_CASE("Best Unit Search", "[best]")
 	std::vector<Position> t_data{ pos1, pos2 };
 
 	GrowingGas gg(t_data);
-	std::array<Unit*, 2> best2 = { 0,0 };
-	best2 = gg.get2BestMatchingUnits(pos1);
+
+    gg.apply(pos1);
+	auto best2 = gg.get2BestMatchingUnits(pos1);
 	REQUIRE(best2[0]);
 	REQUIRE(best2[1]);
 	if (best2[0] && best2[1])
